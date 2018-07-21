@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>1-2-3-fluege.de</title>
+
+    <!-- Hier nur Verweise zu Projektklassen -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="map_right_contentarea.js"></script>
+    <script src="logic_search_for_flights.js"></script>
+
+    <!-- Hier nur Imports für die Weltkarte -->
+    <link rel="stylesheet" href="leaflet/leaflet.css"/>
+    <script src="leaflet/leaflet.js"></script>
+
+</head>
+
+
+<body>
+
+    <div id="Kopf- und Suchleiste">
+
+        <div class="KopfleisteBackground">
+            <div class="KopfleisteTitel">
+                1-2-3-fluege.de
+            </div>
+            <img class="Logo" src="LogoFlugsuche.png" alt="Logo für die Webseite">
+        </div>
+
+
+
+        <!-- Nachfolgend die obere Zeile der Sucheingabe (Eingabe AirportCode) -->
+
+        <div class="SucheingabeObereZeile">
+
+            <div class="TextBeschreibungSpalte">
+                AirportCode eingeben:
+            </div>
+
+            <div id="EingabefelderZeile1" style="text-align: center">
+
+                <form id="EingabefelderFormSuche">
+                    Von → <input class="Sucheingabefeld" id="ValueFieldFrom" type="text" name="origin" autocomplete="off" placeholder="..." style="margin-right: 10px">
+                    <input class="Sucheingabefeld" id="ValueFieldTo" type="text" name="destination" autocomplete="off" placeholder="..." style="margin-left: 10px"> ← Nach
+                </form>
+
+            </div>
+
+            <div id="SuchButtonZeile1">
+                <button class="Suchbutton" onclick="triggerFlugSuche()"> Jetzt Suchen</button>
+            </div>
+
+        </div>
+
+
+        <!-- Nachfolgend die untere Zeile der Sucheingabe (Airport Vorschläge) -->
+
+        <div class="SucheingabeUntereZeile">
+
+            <div class="TextBeschreibungSpalte">
+                Aus Vorschlägen auswählen:
+            </div>
+
+            <div id="DropdownAirportsZeile2" style="text-align: center">
+                <select class="dropdown" oninput="updateFromFeld()" id="DropDownFrom" autocomplete="off" style="margin-right: 10px; width: 200px">
+                    <option value="" hidden>Startflughafen auswählen</option>
+                    <option value="10">Huahine</option>
+                    <option value="25">Honolulu</option>
+                    <option value="28">Portland</option>
+                    <option value="26">Kahului</option>
+                </select>
+
+                <select class="dropdown" oninput="updateToFeld()" id="DropDownTo" autocomplete="off" style="margin-left: 10px; width: 200px">
+                    <option value="" hidden>Zielflughafen auswählen</option>
+                    <option value="30">Los Angles</option>
+                    <option value="45">Melbourne</option>
+                    <option value="35">Phoenix</option>
+                    <option value="23">Manihi</option>
+                </select>
+            </div>
+
+            <div class="NameInput" id="NameFeldZeile2">
+                <form name="UserName">
+                    Dein Name: <input type="text" name="Name" autocomplete="off">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Nachfolgend der Bereich unter der Sucheingabe. Aufteilung in linke und rechte Spalte -->
+
+
+    <div style="background-color: darkcyan; margin-top: 30px">&nbsp;
+    </div>
+
+    <div id="SpaltenContent" style="height: 73%">
+
+        <div id="LinkeSpalte" class="LinkeSpalte" style="overflow-y: scroll">
+
+            <div id="SpalteFuerSuchergebnisse">
+                <div id="TitelleisteSuchergebnisse">
+
+                    <!-- Hier könnte mit MarkoJS ein Platzhalter für den eingegebenen Namen erstellt werden
+                    Beispiel: Jan, hier sind Deine perfekten Flüge: -->
+                    <h1>Suchergebnisse</h1>
+
+                </div>
+
+                <ul class="FlightSearchResults" id="FlightSearchResult">
+                    <li class="hidden" id="ResultDummy">
+                        <span class="airportFrom"></span>&#x27A1<span class="airportTo"></span><br>
+                        ↗️ <span class="Abflug"> </span> ↘️ <span class="Ankunft"></span>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div id="RechteSpalte" class="RechteSpalte">
+            <div class="Weltkarte" id="map">
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Nachfolgend der Bereich für die Fußleiste -->
+
+    <div class="Fussleiste">
+        <div style="padding-top: 8px">
+            (c) 2018 - FlugSucheOnline GmbH
+        </div>
+    </div>
+
+
+    <!-- Nachfolgend der Bereich für den OverlayWrapper (Warte-Bildschirm) -->
+
+    <div class="Overlay" id="waitOverlayWrapper" style="display: none">
+        <div id="waitOverlayContent">
+            <img id="plane" src="airplane.png" alt="flugzeug bild" >
+            <div style="margin-top: 20px; margin-left: 5px; color: black">
+                <strong>Bitte Warten ...</strong> <br>
+                <br>
+                Dein perfekter Flug <br>
+                wird gerade gesucht!
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+<!-- Nachfolgend der Java-Script Teil zum initalisieren der Weltkarte. Das restliche JavaScript ist ausgelagert -->
+
+<script>
+
+    initMap('map');
+
+</script>
+
+</html>

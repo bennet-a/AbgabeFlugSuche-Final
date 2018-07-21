@@ -1,0 +1,282 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* CSS Konfiguration für das grobe Seitenlayout */
+
+#SpaltenContent {
+    height: 85%;
+}
+
+#LinkeSpalte h1 {
+    background: darkcyan;
+    color: white;
+    margin: 0;
+    font-size: 1.6em;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left: 10px;
+    margin-bottom: 0;
+    position: sticky;
+    top:0;
+    font-family: "Arial Black";
+}
+
+.LinkeSpalte {
+    width: 30%;
+    height: 100%;
+    background: white;
+    float:left;
+    border-left: black;
+}
+
+.RechteSpalte {
+    width: 70%;
+    height: 100%;
+    background: grey;
+    float:right;
+}
+
+/* CSS Konfiguration der Kopfleiste */
+
+.KopfleisteTitel {
+    color:white;
+    padding-top: 10px;
+    font-family: "Arial Black";
+}
+
+.Logo {
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    left: 4%;
+    top: 0%;
+    z-index: 2;
+    box-shadow: 0.5px 0.5px 20px 8px #888888;
+}
+
+.KopfleisteBackground {
+    background-color: darkcyan;
+    height: 50px;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+/* CSS Konfiguration der Sucheingabe */
+
+.SucheingabeObereZeile {
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0px;
+    background-color: lightgray;
+    column-span: 3;
+}
+
+.TextBeschreibungSpalte {
+    text-align: right;
+    font-family: 'Arial Black';
+}
+
+.SucheingabeUntereZeile {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0px;
+    background-color: lightgray;
+    column-span: 3;
+}
+
+.SucheingabeObereZeile > div {
+    height: 30px;
+}
+
+.SucheingabeUntereZeile > div {
+    height: 30px;
+    padding-bottom: 10px;
+}
+
+.Sucheingabefeld {
+    width: 100px;
+    background:transparent;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.Sucheingabefeld:hover, .Sucheingabefeld:focus {
+    width: 100px;
+    background:white;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.Suchbutton {
+    font-weight: bold;
+    border-radius: 5px;
+    height: 1.6em;
+    font-size: 1em;
+    box-shadow: black;
+    background: white;
+    margin-left: 15px;
+}
+
+.Suchbutton:hover {
+    background: darkcyan;
+}
+
+.Suchbutton:focus {
+    background: darkcyan;
+}
+
+.dropdown {
+    border-radius: 5px;
+}
+
+.NameInput {
+    text-align: left;
+    font-family: 'Arial';
+    margin-left: 15px;
+}
+
+/* CSS Konfiguration der Weltkarte */
+
+.Weltkarte {
+    z-index: 1;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* CSS Konfiguration der Suchergebnisse */
+
+.FlightSearchResults li:nth-of-type(odd) {
+    cursor: pointer;
+    background: #DFDFDF;
+    border-bottom: 2px solid darkgray;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left: 10px;
+    font-family: "Arial Black";
+    font-size: 1em;
+    transition: background-color 0.3s;
+    transition-timing-function: ease-in;
+}
+
+.FlightSearchResults li:nth-of-type(even) {
+    cursor: pointer;
+    background: #EFEFEF;
+    border-bottom: 2px solid darkgray;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left: 10px;
+    font-family: "Arial Black";
+    transition: background-color 0.3s;
+    transition-timing-function: ease-in;
+}
+
+.FlightSearchResults li:hover {
+    transition: background-color 0.1s;
+    transition-timing-function: ease-out;
+    background: lightcoral;
+}
+
+.Abflug, .Ankunft {
+    font-family: Arial;
+}
+
+/* CSS Konfiguration der Fußleiste */
+
+.Fussleiste {
+    height: 50px;
+    width: 100%;
+    background: darkcyan;
+    text-align: center;
+    color: white;
+    font-family: Arial;
+    font-size: 10px;
+}
+
+/* CSS Konfiguration für das Overlay */
+
+.Overlay {
+    z-index: 5;
+}
+
+#waitOverlayWrapper{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #464646;
+    opacity: 0.6;
+    position: fixed;
+}
+
+#waitOverlayContent{
+    width: 15%;
+    height: 170px;
+    box-shadow: 5px 5px 5px #9F9F9F ;
+    border-radius: 10px;
+    font-family: "Arial Black";
+    text-align: center;
+    background-color: white;
+    left: 40%;
+    top: calc(50% - 75px);
+    position: relative;
+}
+
+
+/* CSS Konfiguration für die Flugzeuganimation */
+
+@keyframes flyingPlane {
+
+    0%{
+        left:-40%;
+        transform: rotate(0deg);
+    }
+    40%{
+        left:40%;
+        transform: rotate(0deg);
+    }
+    60%{
+        left:40%;
+        transform: rotate(180deg);
+    }
+    90%{
+        left:-40%;
+        transform: rotate(180deg);
+    }
+    100%{
+        left:-40%;
+        transform: rotate(0deg);
+    }
+}
+
+#plane{
+    width:32px;
+    height: 32px;
+    margin-top: 10px;
+    position: relative;
+    animation: flyingPlane;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.hidden {
+    display: none;
+}

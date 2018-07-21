@@ -1,0 +1,13 @@
+
+-   Die Entwicklung und Anpassung der UI wurde in Firefox getätigt
+
+-   Die Funktionalität der Flugsuche ermöglicht momentan nur die Suche
+    anhand der AirportCodes. Über das Dropdownmenü können ausgewählte Vorschläge ausgewählt werden.
+
+-   JavaScript Funktionalitäten für eine spezifische Komponente wurden in eigene Files
+    ausgelagert. Dies dient Übersichtlichkeitszwecken. Aus Performance Sicht wären weniger
+    Files, sprich weniger HTTP-Request, sinnvoller. Dies führt bei einem so kleinen Projekt
+    jedoch zu keinen merkbaren Unterschieden.
+
+-   Kommentare wurden absichtlich im Code gelassen, um eine bessere Verständlichkeit zu gewährleisten.
+    Diese können bei einer potentiellen Veröffentlichung entfernt werden
